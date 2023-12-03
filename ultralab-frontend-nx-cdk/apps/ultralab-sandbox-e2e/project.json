@@ -1,0 +1,33 @@
+{
+  "name": "ultralab-sandbox-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/ultralab-sandbox-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/ultralab-sandbox-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "ultralab-sandbox:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "ultralab-sandbox:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "ultralab-sandbox:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/ultralab-sandbox-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["ultralab-sandbox"]
+}

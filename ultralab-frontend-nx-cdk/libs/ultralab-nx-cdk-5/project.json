@@ -1,0 +1,44 @@
+{
+  "name": "ultralab-nx-cdk-5",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/ultralab-nx-cdk-5/src",
+  "prefix": "ultralab-frontend-nx-cdk",
+  "tags": [],
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:package",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/ultralab-nx-cdk-5/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/ultralab-nx-cdk-5/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/ultralab-nx-cdk-5/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/ultralab-nx-cdk-5/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/ultralab-nx-cdk-5/**/*.ts",
+          "libs/ultralab-nx-cdk-5/**/*.html",
+          "libs/ultralab-nx-cdk-5/package.json"
+        ]
+      }
+    }
+  }
+}
